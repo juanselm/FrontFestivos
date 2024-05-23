@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
+The project have two endpoints
+
+## List Holidays
+
+- This endpoint have two services: List holidays and check holiday.
+`
+http://localhost:4200/festivos
+`
+
+## Inicio
+
+- This endpoint show an short Angular video.
+`
+http://localhost:4200/inicio
+`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
