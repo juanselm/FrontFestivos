@@ -1,0 +1,10 @@
+<div class="year-calendar">
+    <ng-container *ngFor="let month of months">
+      <h3>{{ month.date | date: 'MMMM yyyy' }}</h3>
+      <mwl-calendar-month-view
+        [viewDate]="month.date"
+        [events]="events"
+        [activeDayIsOpen]="false">
+      </mwl-calendar-month-view>
+    </ng-container>
+  </div>
