@@ -1,42 +1,55 @@
-<mat-card>
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="cards-container">
+  
+  <mat-card class="card">
     <mat-card-header>
-      <mat-card-title>Date check</mat-card-title>
+      <mat-card-title>Holidays List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Select a year</p>
+      <mat-form-field class="full-width" >
+        <mat-label>Choose a year</mat-label>
+        <input matInput [(ngModel)]="selectedYear" type="number" min="2000" max="2100" placeholder="e.g., 2024">
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="getHolidays()">List</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Date Check</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>Select a date</p>
+      <mat-form-field class="full-width">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" placeholder="e.g., 01/01/2024">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="checkHolidays()">Check</button>
+      </div>
     </mat-card-content>
-    <mat-form-field>
-    <mat-label>Choose a date</mat-label>
-    <!-- #docregion toggle -->
-      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" min="2000" max="2100" placeholder="e.g., 01/01/2024">
-      <mat-hint></mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    <!-- #enddocregion toggle -->
-    </mat-form-field>
-    <mat-card-actions>
-      <button mat-button (click)="checkHolidays()">Check</button>
-    </mat-card-actions>
-</mat-card>
+  </mat-card>
 
-<mat-card>
+</div>
+
+<mat-card class="card">
   <mat-card-header>
-    <mat-card-title>Year Check</mat-card-title>
+    <mat-card-title>Holidays List</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>Select a year</p>
-    <mat-form-field>
-      <mat-label>Choose a year</mat-label>
-      <input matInput [(ngModel)]="selectedYear" type="number" min="2000" max="2100" placeholder="e.g., 2024">
-    </mat-form-field>
+    <ngx-datatable class="dark" 
+      [rows]="festivos" 
+      [columns]="columnas" 
+      class="material" 
+      [columnMode]="'force'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [rowHeight]="50"
+      [limit]="10">
+    </ngx-datatable>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="getHolidays()">List</button>
-  </mat-card-actions>
 </mat-card>
-
-<ngx-datatable [rows]="festivos" [columns]="columnas">
-
-</ngx-datatable>
-
-

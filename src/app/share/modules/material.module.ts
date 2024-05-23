@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxDatatableModule
   ],
   exports: [
     MatButtonModule,
@@ -53,7 +55,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSortModule,
     MatDialogModule,
     MatSnackBarModule,
-    
+    NgxDatatableModule
   ]
 })
 export class MaterialModule { }

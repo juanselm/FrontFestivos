@@ -9,6 +9,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
 import { FestivosService } from '../../services/festivos.service';
 import { DatePipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-festivos',
@@ -29,7 +30,7 @@ export class FestivosComponent  {
   public selectedYear: number;
   public selectedDate: string;
 
-  constructor(private festivosService: FestivosService, private datePipe: DatePipe) {
+  constructor(private festivosService: FestivosService, private datePipe: DatePipe, private snackBar: MatSnackBar) {
     this.selectedYear = new Date().getFullYear(); // se asigna el año actual como valor por defecto
     this.selectedDate = "";
   }
@@ -47,8 +48,13 @@ export class FestivosComponent  {
               tipo: item.tipo
             }));
           },
-          error: error  => {
-            window.alert(error.message);
+          error: error => {
+            this.snackBar.open(error.message, 'Close', {
+              duration: 3000,
+              panelClass: 'error-alert',
+              horizontalPosition: 'center',
+              verticalPosition: 'top'
+            });
           }
       });
     }
@@ -59,15 +65,22 @@ export class FestivosComponent  {
       const formattedDate = this.datePipe.transform(this.selectedDate, 'dd/MM/yyyy');
       if (formattedDate) {
         this.festivosService.checkHolidays(formattedDate).subscribe({
-          next: (response: boolean) => {
-            if (response) {
-              window.alert("It's a holiday");
-            } else {
-              window.alert("It's not a holiday");
-            }
+          next: response => {
+            const message = response ? 'Is a holiday' : 'Not a holiday';
+            this.snackBar.open(message, 'Close', {
+              duration: 3000,
+              panelClass: response ? 'holiday-alert' : 'not-holiday-alert',
+              horizontalPosition: 'center',
+              verticalPosition: 'top'
+            });
           },
           error: error => {
-            window.alert(error.message);
+            this.snackBar.open(error.message, 'Close', {
+              duration: 3000,
+              panelClass: 'error-alert',
+              horizontalPosition: 'center',
+              verticalPosition: 'top'
+            });
           }
         });
       }
