@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
-The project have two endpoints
+This project allows connecting to the backend `https://github.com/juanselm/festivos.git`, which exposes two services: one for listing holidays and another for verifying holidays.
 
 ## List Holidays
 
