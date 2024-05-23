@@ -8,14 +8,14 @@ This project allows connecting to the backend `https://github.com/juanselm/festi
 
 - This endpoint have two services: List holidays and check holiday.
 `
-http://localhost:4200/festivos
+http://localhost:4200/holidays
 `
 
 ## Home
 
 - This endpoint show an short Angular video.
 `
-http://localhost:4200/inicio
+http://localhost:4200/home
 `
 
 ## Development server

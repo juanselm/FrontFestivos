@@ -3,6 +3,6 @@ import { FestivosComponent } from './features/components/festivos/festivos.compo
 import { InicioComponent } from './features/components/inicio/inicio.component';
 
 export const routes: Routes = [
-    {path: "inicio", component: InicioComponent},
-    {path: "festivos", component: FestivosComponent},
+    {path: "home", component: InicioComponent},
+    {path: "holidays", component: FestivosComponent},
 ];
