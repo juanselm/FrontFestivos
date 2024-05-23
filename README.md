@@ -11,7 +11,7 @@ This project allows connecting to the backend `https://github.com/juanselm/festi
 http://localhost:4200/festivos
 `
 
-## Inicio
+## Home
 
 - This endpoint show an short Angular video.
 `
